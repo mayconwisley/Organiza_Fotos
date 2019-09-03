@@ -189,6 +189,7 @@
             this.CbProcessarSubPasta.TabIndex = 15;
             this.CbProcessarSubPasta.Text = "Processar SubPastas";
             this.CbProcessarSubPasta.UseVisualStyleBackColor = true;
+            this.CbProcessarSubPasta.Visible = false;
             this.CbProcessarSubPasta.CheckedChanged += new System.EventHandler(this.CbProcessarSubPasta_CheckedChanged);
             // 
             // FrmPrincipal

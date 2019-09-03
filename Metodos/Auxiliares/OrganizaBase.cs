@@ -50,7 +50,7 @@ namespace Metodos.Auxiliares
                 {
                     dt = DataFoto(opcExtra, item, fileInfo);
                     novoDir = NovoDiretorio(strDiretorio, fileInfo, apenasMes, opcExtra);
-                      Directory.CreateDirectory(novoDir);
+                    Directory.CreateDirectory(novoDir);
 
                     File.Move(item.Trim(), novoDir + @"\" + fileInfo.Name);
                 }
