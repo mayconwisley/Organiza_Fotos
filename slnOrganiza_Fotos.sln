@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizar_Fotos", "Organizar_Fotos\Organizar_Fotos.csproj", "{5E26B0E9-36C1-4DD4-9959-064C359DDAFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metodos", "Metodos\Metodos.csproj", "{D21F006F-4DC7-4165-9144-51792688E888}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E26B0E9-36C1-4DD4-9959-064C359DDAFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E26B0E9-36C1-4DD4-9959-064C359DDAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E26B0E9-36C1-4DD4-9959-064C359DDAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E26B0E9-36C1-4DD4-9959-064C359DDAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D21F006F-4DC7-4165-9144-51792688E888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D21F006F-4DC7-4165-9144-51792688E888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D21F006F-4DC7-4165-9144-51792688E888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D21F006F-4DC7-4165-9144-51792688E888}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22AC9449-06D7-43A6-B40C-3C9FADC3723F}
+	EndGlobalSection
+EndGlobal
