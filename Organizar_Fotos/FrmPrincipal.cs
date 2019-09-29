@@ -26,7 +26,7 @@ namespace Organiza_Fotos
 
         private void BtnProcessar_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
+            Processo_Worker.RunWorkerAsync();
         }
 
         #region Funções
@@ -147,7 +147,7 @@ namespace Organiza_Fotos
             }
         }
 
-        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void Processo_Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             try
             {
@@ -158,16 +158,6 @@ namespace Organiza_Fotos
                 MessageBox.Show(ex.Message);
 
             }
-        }
-
-        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-
         }
     }
 }

@@ -41,7 +41,7 @@
             this.CbCriarAtePastaMes = new System.Windows.Forms.CheckBox();
             this.LblProcessando = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.Processo_Worker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.PbImagem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,11 +167,9 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Maycon Wisley - v1.0";
             // 
-            // backgroundWorker1
+            // Processo_Worker
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
+            this.Processo_Worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Processo_Worker_DoWork);
             // 
             // FrmPrincipal
             // 
@@ -211,7 +209,7 @@
         private System.Windows.Forms.CheckBox CbCriarAtePastaMes;
         private System.Windows.Forms.Label LblProcessando;
         private System.Windows.Forms.Label label3;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker Processo_Worker;
     }
 }
 
