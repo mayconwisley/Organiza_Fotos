@@ -42,6 +42,7 @@
             this.LblProcessando = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.Processo_Worker = new System.ComponentModel.BackgroundWorker();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbImagem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,11 +172,21 @@
             // 
             this.Processo_Worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Processo_Worker_DoWork);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(235, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Imagens suportadas: .jpg .jpeg .png .gif .tiff .bmp";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 479);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LblProcessando);
             this.Controls.Add(this.CbCriarAtePastaMes);
@@ -210,6 +221,7 @@
         private System.Windows.Forms.Label LblProcessando;
         private System.Windows.Forms.Label label3;
         private System.ComponentModel.BackgroundWorker Processo_Worker;
+        private System.Windows.Forms.Label label4;
     }
 }
 
