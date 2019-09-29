@@ -16,9 +16,7 @@ namespace Organiza_Fotos
         }
         string diretorio = string.Empty;
         string[] extensao = { "jpg", "jpeg", "png", "gif", "tiff", "bmp" };
-        string[] tudoext = { "*" };
-        bool bOpcExtra = false, bApenasMes = false, opcSubPasta = false;
-        int qtdArquivo = 0;
+        bool bApenasMes = false;
 
         private void BtnProcura_Click(object sender, EventArgs e)
         {
@@ -28,15 +26,7 @@ namespace Organiza_Fotos
 
         private void BtnProcessar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Processar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-
-            }
+            backgroundWorker1.RunWorkerAsync();
         }
 
         #region Funções
@@ -45,36 +35,36 @@ namespace Organiza_Fotos
         {
             try
             {
-                LblProcessando.Text = "Processando...";
-                if (opcSubPasta == true)
-                {
-                    //Reanalizar processo de pastas;
-                    //EstruturaPastaMover.Raiz(diretorio, tudoext);
-                }
-                else
-                {
 
-                    if (CbCriarAtePastaMes.Checked == false && CbOpcExtra.Checked == false)
-                    {
-                        OrganizarFoto.ListaImagens(diretorio, extensao, bApenasMes, bOpcExtra);
-                    }
-                    else if (CbCriarAtePastaMes.Checked == true && CbOpcExtra.Checked == false)
-                    {
-                        OrganizarFoto.ListaImagens(diretorio, extensao, bApenasMes, bOpcExtra);
-                    }
-                    else if ((CbCriarAtePastaMes.Checked == true || CbCriarAtePastaMes.Checked == false) && CbOpcExtra.Checked == true)
-                    {
-                        OrganizaArquivo.ListaArquivos(diretorio, tudoext, bApenasMes, bOpcExtra);
-                    }
+
+                Invoke((Action)(() =>
+                {
+                    LblProcessando.Text = "Processando...";
+
+                }));
+
+
+                if (CbCriarAtePastaMes.Checked == false)
+                {
+                    OrganizarFoto.ListaImagens(diretorio, extensao, bApenasMes);
                 }
+                else if (CbCriarAtePastaMes.Checked == true)
+                {
+                    OrganizarFoto.ListaImagens(diretorio, extensao, bApenasMes);
+                }
+
+
+                Invoke((Action)(() =>
+                {
+                    LblProcessando.Text = "Concluido o processo de organização.";
+
+                }));
                 ArvorePastaArquivo(diretorio);
-                LblProcessando.Text = "Concluido o processo de organização.";
+
             }
             catch (Exception ex)
             {
-                qtdArquivo++;
-                MessageBox.Show(ex.Message + "\n\nQuantidade movido: " + qtdArquivo.ToString(), "Aviso", MessageBoxButtons.OK);
-                Processar();
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -92,26 +82,25 @@ namespace Organiza_Fotos
 
         private void ArvorePastaArquivo(string strDiretorio)
         {
-            tvArvorePasta.Nodes.Clear();
+
 
             try
             {
-                if (diretorio != "" && Directory.Exists(strDiretorio))
+                Invoke((Action)(() =>
                 {
-                    //Lista arquivos e subpastar no treeview
-                    if (CbOpcExtra.Checked == true)
+                    tvArvorePasta.Nodes.Clear();
+                    if (diretorio != "" && Directory.Exists(strDiretorio))
                     {
-                        EstruturaPasta.Raiz(strDiretorio, tudoext, tvArvorePasta);
+                        //Lista arquivos e subpastar no treeview
+                        EstruturaPasta.Raiz(strDiretorio, extensao, tvArvorePasta);
+
                     }
                     else
                     {
-                        EstruturaPasta.Raiz(strDiretorio, extensao, tvArvorePasta);
+                        MessageBox.Show("Selecione uma pasta!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Selecione uma pasta!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+
+                }));
             }
             catch (Exception ex)
             {
@@ -145,20 +134,6 @@ namespace Organiza_Fotos
             }
         }
 
-        private void CbProcessarSubPasta_CheckedChanged(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Opção apenas para Opção Extra", "Aviso", MessageBoxButtons.OK) == DialogResult.OK)
-            {
-                CbOpcExtra.Checked = true;
-                bOpcExtra = true;
-                opcSubPasta = true;
-            }
-            else
-            {
-                opcSubPasta = false;
-            }
-        }
-
         private void TvArvorePasta_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             try
@@ -172,19 +147,27 @@ namespace Organiza_Fotos
             }
         }
 
-        private void CbOpcExtra_CheckedChanged(object sender, EventArgs e)
+        private void BackgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (CbOpcExtra.Checked)
+            try
             {
-                CbCriarAtePastaMes.Checked = false;
-                CbCriarAtePastaMes.Enabled = false;
-                bOpcExtra = true;
+                Processar();
             }
-            else
+            catch (Exception ex)
             {
-                CbCriarAtePastaMes.Enabled = true;
-                bOpcExtra = false;
+                MessageBox.Show(ex.Message);
+
             }
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

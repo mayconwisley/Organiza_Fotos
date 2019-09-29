@@ -41,8 +41,7 @@
             this.CbCriarAtePastaMes = new System.Windows.Forms.CheckBox();
             this.LblProcessando = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.CbOpcExtra = new System.Windows.Forms.CheckBox();
-            this.CbProcessarSubPasta = new System.Windows.Forms.CheckBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.PbImagem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,37 +167,17 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Maycon Wisley - v1.0";
             // 
-            // CbOpcExtra
+            // backgroundWorker1
             // 
-            this.CbOpcExtra.AutoSize = true;
-            this.CbOpcExtra.Location = new System.Drawing.Point(15, 51);
-            this.CbOpcExtra.Name = "CbOpcExtra";
-            this.CbOpcExtra.Size = new System.Drawing.Size(287, 17);
-            this.CbOpcExtra.TabIndex = 14;
-            this.CbOpcExtra.Text = "Opção extra - Listar Todos Arquivos e Separar Por Tipo";
-            this.CbOpcExtra.UseVisualStyleBackColor = true;
-            this.CbOpcExtra.CheckedChanged += new System.EventHandler(this.CbOpcExtra_CheckedChanged);
-            // 
-            // CbProcessarSubPasta
-            // 
-            this.CbProcessarSubPasta.AutoSize = true;
-            this.CbProcessarSubPasta.Enabled = false;
-            this.CbProcessarSubPasta.Location = new System.Drawing.Point(604, 49);
-            this.CbProcessarSubPasta.Name = "CbProcessarSubPasta";
-            this.CbProcessarSubPasta.Size = new System.Drawing.Size(127, 17);
-            this.CbProcessarSubPasta.TabIndex = 15;
-            this.CbProcessarSubPasta.Text = "Processar SubPastas";
-            this.CbProcessarSubPasta.UseVisualStyleBackColor = true;
-            this.CbProcessarSubPasta.Visible = false;
-            this.CbProcessarSubPasta.CheckedChanged += new System.EventHandler(this.CbProcessarSubPasta_CheckedChanged);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BackgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 479);
-            this.Controls.Add(this.CbProcessarSubPasta);
-            this.Controls.Add(this.CbOpcExtra);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.LblProcessando);
             this.Controls.Add(this.CbCriarAtePastaMes);
@@ -232,8 +211,7 @@
         private System.Windows.Forms.CheckBox CbCriarAtePastaMes;
         private System.Windows.Forms.Label LblProcessando;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox CbOpcExtra;
-        private System.Windows.Forms.CheckBox CbProcessarSubPasta;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

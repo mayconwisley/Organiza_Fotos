@@ -6,7 +6,7 @@ namespace Metodos.Auxiliares
 {
     public class OrganizarFoto : OrganizaBase
     {
-        public static void ListaImagens(string strDiretorio, String[] extensao, bool apenasMes = false, bool opcExtra = true)
+        public static void ListaImagens(string strDiretorio, String[] extensao, bool apenasMes = false)
         {
             List<string> lstArquivo = new List<string>();
 
@@ -14,7 +14,7 @@ namespace Metodos.Auxiliares
             {
                 lstArquivo.AddRange(Directory.GetFiles(strDiretorio, string.Format("*.{0}", item)));
             }
-            Organizar(strDiretorio, lstArquivo, apenasMes, opcExtra);
+            Organizar(strDiretorio, lstArquivo, apenasMes);
         }
     }
 }
